@@ -19,28 +19,56 @@
 			{{/each}}
 		</ul>
 	</script>
+
+	<script class="colorsTemplate" type="text/template">
+		<ul>
+			{{#each color}}
+			<li>{{this}}</li>
+			{{/each}}
+		</ul>
+	</script>
+
+	<script type="text/template" class="carsTemplate">
+		<thead>
+			<tr>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Color</th>
+				<th>Price</th>
+				<th>Registration</th>
+			</tr>
+			</thead>
+		{{#each car}}
+		<tr>
+		<td>{{make}}</td>
+		<td>{{model}}</td>
+		<td style="background-color:{{color}}">{{color}}</td>
+		<td>{{price}}</td>	
+		<td>{{reg_number}}</td>	
+		</tr>
+		{{/each}}
+	</script>
 </head>
 
 <body>
 
 	<div class="container">
 		<h1>Car info</h1>
-		<div class="loader hidden"></div>
+		
 
 		<h2>Colors</h2>
-		<div class="colors">
-
+		<div class="colorsSpinner"></div>
+		<div class="colorsTemplateInsertPoint">
 		</div>
 
 		<h2>Brands</h2>
-		<div class="brands">
-
+		<div class="makesSpinner"></div>
+		<div class="makesTemplateInsertPoint">
 		</div>
 
 		<h2>Cars</h2>
-		<div class="cars">
-
-		</div>
+		<div class="carsSpinner"></div>
+		<table class="carsTemplateInsertPoint">
 	</div>
 </body>
 <script src="cars.js"></script>
