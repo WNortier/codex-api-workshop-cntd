@@ -7,37 +7,43 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Filter widget</title>
 	<link rel="stylesheet" href="style.css">
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js"
 		integrity="sha256-hSzapznWRy/aOZkctlN03an9DxCLlN8ZCQS0lxntiHg=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
+	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
 		integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+	
 	<script src="/filter.js"></script>
-	<link rel="stylesheet" href="/style.css">
+	<!-- <link rel="stylesheet" href="/style.css"> -->
+	<link rel="stylesheet" href="simple-grid.css">
 
 	<script class="colorTemplate" type="text/template">
-			{{#each color}}
-			<option value="{{this}}">{{this}}
-			{{/each}}
+		{{#each color}}<option value="{{this}}">{{this}}</option>{{/each}}
 	</script>
 
 	<script class="makeTemplate" type="text/template">
-			{{#each make}}
-			<option value="{{this}}">{{this}}
-			{{/each}}
+		{{#each make}}<option value="{{this}}">{{this}}</option>{{/each}}
+	</script>
+
+	<script class="errorTemplate" type="text/template">
+	<h6>{{error}}</h6>
 	</script>
 
 	<script type="text/template" class="carsTemplate">
 		<thead>
 			<tr>
+				<th></th>
 				<th>Make</th>
 				<th>Model</th>
 				<th>Color</th>
 				<th>Price</th>
 				<th>Registration</th>
 			</tr>
-			</thead>
+		</thead>
 		{{#each car}}
 		<tr>
+		<td><input type="checkbox" class="carFavorite" value="{{reg_number}}"></td>
 		<td>{{make}}</td>
 		<td>{{model}}</td>
 		<td style="background-color:{{color}}">{{color}}</td>
@@ -50,20 +56,57 @@
 
 <body>
 	<div class="container">
-		<h1>Filter widget</h1>
 
-		<select class="colorSelect colorTemplateInsertPoint" style="height:2.5em;background-color:#0069ed;;color:white;">
-		</select>
+		<div class="row">
+			<div class="col-12">
+				<h1>Filter widget</h1>
+			</div>
+		</div>
 
-		<select class="makeSelect makeTemplateInsertPoint" style="height:2.5em;background-color:#0069ed;;color:white;">
-		</select>
+		<div class="row">
+			<div class="col-12 errorTemplateInsertPoint">
 
-		<input class="filterBtn" type="button" value="Filter">
+			</div>
 
-		<input class="allBtn" type="button" value="All Cars">
+		</div>
 
-		<table class="carsTemplateInsertPoint">
-		</table>
+		<div class="row">
+
+
+			<div class="col-3">
+				<select class="colorSelect colorTemplateInsertPoint"></select>
+			</div>
+
+			<div class="col-3">
+					<select class="makeSelect makeTemplateInsertPoint"></select>
+				</div>
+
+
+
+
+	
+			<div class="col-6">
+				<input class="filterBtn" type="button" value="Filter">
+
+				<input class="allBtn" type="button" value="All Cars">
+
+				<input class="showFavoritesBtn" type="button" value="Show Favs">
+
+				<input class="storeFavoritesBtn" type="button" value="Store Favs">
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-12">
+				<table class="carsTemplateInsertPoint dynamic">
+
+				</table>
+			</div>
+		</div>
+
+
 	</div>
 </body>
+
 </html>
